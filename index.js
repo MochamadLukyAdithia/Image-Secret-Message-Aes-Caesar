@@ -1,6 +1,6 @@
 
 
-// Global variables
+
 const plainText = document.querySelector('#plaintext');
 const key = document.querySelector('#key');
 const aesKey = document.querySelector('#aes-key');
@@ -24,7 +24,7 @@ const ctx = canvas.getContext("2d");
 const ctxAfter = canvasAfter.getContext("2d");
 const ctxDecrypt = canvasDecrypt.getContext("2d");
 
-// Initialize canvas sizes
+
 canvas.width = 400;
 canvas.height = 300;
 canvasAfter.width = 400;
@@ -32,12 +32,12 @@ canvasAfter.height = 300;
 canvasDecrypt.width = 400;
 canvasDecrypt.height = 300;
 
-// Encryption method state
+
 let currentEncryptionMethod = 'combined';
 let currentDecryptionMethod = 'caesar';
 let imageDataWithMessage = null;
 
-// Event Listeners
+
 document.getElementById('caesar-toggle').addEventListener('click', () => toggleEncryption('caesar'));
 document.getElementById('aes-toggle').addEventListener('click', () => toggleEncryption('aes'));
 document.getElementById('combined-toggle').addEventListener('click', () => toggleEncryption('combined'));
@@ -60,11 +60,11 @@ stegoImage.addEventListener('change', handleStegoImage);
 document.getElementById('btn-decrypt').addEventListener('click', handleDecrypt);
 document.getElementById('btn-reset-decrypt').addEventListener('click', resetDecrypt);
 
-// Toggle encryption method
+
 function toggleEncryption(method) {
     currentEncryptionMethod = method;
     
-    // Reset all buttons and options
+    
     document.getElementById('caesar-toggle').classList.remove('bg-teal-500', 'text-white');
     document.getElementById('aes-toggle').classList.remove('bg-teal-500', 'text-white');
     document.getElementById('combined-toggle').classList.remove('bg-teal-500', 'text-white');
@@ -72,7 +72,7 @@ function toggleEncryption(method) {
     document.getElementById('aes-options').classList.add('hidden');
     document.getElementById('combined-options').classList.add('hidden');
     
-    // Activate selected method
+    
     if (method === 'caesar') {
         document.getElementById('caesar-toggle').classList.add('bg-teal-500', 'text-white');
         document.getElementById('caesar-options').classList.remove('hidden');
@@ -87,11 +87,11 @@ function toggleEncryption(method) {
     processEncryption();
 }
 
-// Toggle decryption method
+
 function toggleDecryption(method) {
     currentDecryptionMethod = method;
     
-    // Reset all buttons and options
+    
     document.getElementById('caesar-toggle-decrypt').classList.remove('bg-yellow-500', 'text-white');
     document.getElementById('aes-toggle-decrypt').classList.remove('bg-yellow-500', 'text-white');
     document.getElementById('combined-toggle-decrypt').classList.remove('bg-yellow-500', 'text-white');
@@ -99,7 +99,7 @@ function toggleDecryption(method) {
     document.getElementById('aes-options-decrypt').classList.add('hidden');
     document.getElementById('combined-options-decrypt').classList.add('hidden');
     
-    // Activate selected method
+    
     if (method === 'caesar') {
         document.getElementById('caesar-toggle-decrypt').classList.add('bg-yellow-500', 'text-white');
         document.getElementById('caesar-options-decrypt').classList.remove('hidden');
@@ -112,7 +112,7 @@ function toggleDecryption(method) {
     }
 }
 
-// Process encryption based on selected method
+
 function processEncryption() {
     if (plainText.value === '') {
         chipertext.value = '';
@@ -138,14 +138,14 @@ function processEncryption() {
             chipertext.value = '';
             return;
         }
-        // First AES encryption, then Caesar
+        
         const aesEncrypted = encryptAES(plainText.value, aesKeyCombined.value);
         const result = caesarShift(aesEncrypted, parseInt(keyCombined.value));
         chipertext.value = result;
     }
 }
 
-// Caesar cipher implementation
+
 function caesarShift(str, amount) {
     if (amount < 0) {
         return caesarShift(str, amount + 26);
@@ -167,7 +167,7 @@ function caesarShift(str, amount) {
     return output;
 }
 
-// AES encryption implementation
+
 function encryptAES(text, key) {
     try {
         return CryptoJS.AES.encrypt(text, key).toString();
@@ -177,7 +177,7 @@ function encryptAES(text, key) {
     }
 }
 
-// AES decryption implementation
+
 function decryptAES(ciphertext, key) {
     try {
         const bytes = CryptoJS.AES.decrypt(ciphertext, key);
@@ -189,7 +189,7 @@ function decryptAES(ciphertext, key) {
     }
 }
 
-// Handle cover image selection
+
 function handleCoverImage(e) {
     const file = e.target.files[0];
     if (!file) return;
@@ -207,14 +207,14 @@ function handleCoverImage(e) {
     reader.readAsDataURL(file);
 }
 
-// Check text display for "after"
+
 function checkTextAfter() {
     textAfter.textContent = 'After (Right click to save image)';
 }
 
-// Handle the combine operation (steganography)
+
 function handleCombine() {
-    // Validate inputs
+    
     if (plainText.value === '') {
         alert('Plaintext masih kosong!');
         return;
@@ -232,7 +232,7 @@ function handleCombine() {
 
     checkTextAfter();
     
-    // Prepare data to embed
+    
     const dataToEmbed = {
         method: currentEncryptionMethod,
         text: chipertext.value,
@@ -242,17 +242,17 @@ function handleCombine() {
     const dataString = JSON.stringify(dataToEmbed);
     const dataBytes = new TextEncoder().encode(dataString);
     
-    // Get image data
+    
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     const data = imageData.data;
     
-    // Check if image can hold the message
+    
     if (dataBytes.length * 8 > data.length / 4) {
         alert('Pesan terlalu panjang untuk gambar ini!');
         return;
     }
     
-    // Embed message length (4 bytes)
+    
     const length = dataBytes.length;
     for (let i = 0; i < 4; i++) {
         const byte = (length >> (i * 8)) & 0xFF;
@@ -264,7 +264,7 @@ function handleCombine() {
         }
     }
     
-    // Embed message data
+    
     for (let i = 0; i < dataBytes.length; i++) {
         const byte = dataBytes[i];
         for (let j = 0; j < 8; j++) {
@@ -275,12 +275,12 @@ function handleCombine() {
         }
     }
     
-    // Put the modified image data back to canvas
+    
     ctxAfter.putImageData(imageData, 0, 0);
     imageDataWithMessage = imageData;
 }
 
-// Handle stego image selection for decryption
+
 function handleStegoImage(e) {
     const file = e.target.files[0];
     if (!file) return;
@@ -297,14 +297,14 @@ function handleStegoImage(e) {
     reader.readAsDataURL(file);
 }
 
-// Handle decryption process
+
 function handleDecrypt() {
     if (!stegoImage.files || !stegoImage.files[0]) {
         alert('Upload stego image terlebih dahulu!');
         return;
     }
     
-    // Validate keys based on decryption method
+    
     if (currentDecryptionMethod === 'caesar' && keyDecrypt.value === '') {
         alert('Isi field key terlebih dahulu!');
         return;
@@ -321,11 +321,11 @@ function handleDecrypt() {
         return;
     }
 
-    // Get image data
+    
     const imageData = ctxDecrypt.getImageData(0, 0, canvasDecrypt.width, canvasDecrypt.height);
     const data = imageData.data;
     
-    // Extract message length (first 4 bytes)
+    
     let length = 0;
     for (let i = 0; i < 4; i++) {
         let byte = 0;
@@ -338,7 +338,7 @@ function handleDecrypt() {
         length |= (byte << (i * 8));
     }
     
-    // Extract message data
+    
     const extractedBytes = new Uint8Array(length);
     for (let i = 0; i < length; i++) {
         let byte = 0;
@@ -352,13 +352,13 @@ function handleDecrypt() {
     }
     
     try {
-        // Parse extracted data
+        
         const extractedString = new TextDecoder().decode(extractedBytes);
         const parsedData = JSON.parse(extractedString);
         
         let decryptedText = '';
         
-        // Decrypt based on method
+        
         if (currentDecryptionMethod === 'caesar') {
             if (parsedData.method === 'caesar' || parsedData.method === 'combined') {
                 decryptedText = caesarShift(parsedData.text, -parseInt(keyDecrypt.value));
@@ -373,7 +373,7 @@ function handleDecrypt() {
             }
         } else if (currentDecryptionMethod === 'combined') {
             if (parsedData.method === 'combined') {
-                // First reverse Caesar, then decrypt AES
+                
                 const caesarReversed = caesarShift(parsedData.text, -parseInt(keyCombinedDecrypt.value));
                 decryptedText = decryptAES(caesarReversed, aesKeyCombinedDecrypt.value);
             } else if (parsedData.method === 'caesar') {
@@ -390,7 +390,7 @@ function handleDecrypt() {
     }
 }
 
-// Reset encryption section
+
 function resetEncrypt() {
     plainText.value = '';
     key.value = '';
@@ -405,7 +405,7 @@ function resetEncrypt() {
     textAfter.textContent = '';
 }
 
-// Reset decryption section
+
 function resetDecrypt() {
     stegoImage.value = '';
     keyDecrypt.value = '';
@@ -416,6 +416,6 @@ function resetDecrypt() {
     ctxDecrypt.clearRect(0, 0, canvasDecrypt.width, canvasDecrypt.height);
 }
 
-// Initialize the page
+
 toggleEncryption('combined');
 toggleDecryption('caesar');
