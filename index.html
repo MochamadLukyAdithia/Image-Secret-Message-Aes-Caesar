@@ -9,7 +9,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -18,159 +18,212 @@
 </head>
 <body class="font-roboto text-gray-700" id="landing-page">
 
-    <nav class="bg-slate-800 text-white shadow-md sticky top-0 z-50 h-16 flex items-center">
-        <div class="container mx-auto px-4">
-            <a class="text-3xl font-bold" href="#landing-page">Lukek</a>
+    <nav class="bg-gradient-to-r from-slate-800 to-slate-700 text-white shadow-lg sticky top-0 z-50 h-16 flex items-center">
+        <div class="container mx-auto px-8 pl-24 pr-24 flex justify-between items-center">
+            <a class="text-3xl font-bold flex items-center" href="#landing-page">
+                <i class="fas fa-lock mr-2"></i> Lukek
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#landing-page" class="hover:text-teal-300 transition">Home</a>
+                <a href="#encrypt" class="hover:text-teal-300 transition">Enkripsi</a>
+                <a href="#decrypt" class="hover:text-yellow-300 transition">Dekripsi</a>
+            </div>
         </div>
     </nav>
 
-    <section class="landing-page container mx-auto px-4 py-16 min-h-[80vh] flex items-center">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">
-                    Layanan Pesan Gambar Berbasis Chipper Text
+    <section class="landing-page container mx-auto px-8 pl-24 py-20 min-h-[85vh] flex items-center bg-gradient-to-b from-slate-50 to-slate-100">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="flex flex-col justify-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-slate-800 leading-loose">
+                    Layanan Pesan Pada Gambar Berbasis <span class="text-teal-500">Chipper Text</span>
                 </h1>
-                <p class="text-xl mb-8">A great choice to keep our conversations private</p>
-                <div class="flex gap-4">
-                    <a class="btn-encrypt bg-teal-400 hover:bg-teal-500 text-white px-6 py-3 rounded-full font-bold transition" href="#encrypt">Enkripsi</a>
-                    <a class="btn-decrypt bg-yellow-400 hover:bg-yellow-500 text-white px-6 py-3 rounded-full font-bold transition" href="#decrypt">Deskripsi</a>
+                <p class="text-xl mb-10 text-slate-600 leading-normal">Pilihan terbaik untuk menjaga komunikasi kita tetap private dan aman</p>
+                <div class="flex gap-6">
+                    <a class="btn-encrypt bg-gradient-to-r from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-white px-8 py-4 rounded-xl font-bold transition flex items-center" href="#encrypt">
+                        <i class="fas fa-lock mr-2"></i> Enkripsi
+                    </a>
+                    <a class="btn-decrypt bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white px-8 py-4 rounded-xl font-bold transition flex items-center" href="#decrypt">
+                        <i class="fas fa-unlock mr-2"></i> Deskripsi
+                    </a>
                 </div>
             </div>
             <div class="flex items-center justify-center">
-               
+                <div class="w-4/5 h-64 bg-white rounded-2xl shadow-lg flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-teal-100/30 to-yellow-100/30"></div>
+                    <div class="text-center z-10 p-6">
+                        <i class="fas fa-shield-alt text-6xl text-teal-500 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-slate-700">Lindungi Pesanmu</h3>
+                        <p class="text-slate-600 mt-2">Dengan teknik enkripsi yang kuat</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <div id="encrypt" class="h-16"></div>
 
-
-    <section class="encrypt bg-teal-400 py-16 min-h-screen">
-        <div class="container mx-auto px-4">
-            <h2 class="encrypt-title text-center text-3xl font-bold mb-8">ENKRIPSI</h2>
+    <section class="encrypt bg-gradient-to-br from-teal-400 to-teal-500 py-16 min-h-screen relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="encrypt-title text-center text-3xl font-bold mb-8 text-white section-title">ENKRIPSI</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
+                <div class="card p-6">
                     <div class="mb-4">
-                        <label for="plaintext" class="block font-bold mb-2">Plaintext</label>
-                        <textarea class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" id="plaintext" rows="3"></textarea>
+                        <label for="plaintext" class="block font-semibold mb-2">Plaintext</label>
+                        <textarea class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" id="plaintext" rows="3" placeholder="Masukkan pesanmu disini..."></textarea>
                     </div>
                     
-                    <div class="encryption-method mb-4">
-                        <label class="block font-bold mb-2">Metode Enkripsi:</label>
+                    <div class="encryption-method mb-6">
+                        <label class="block font-semibold mb-3">Metode Enkripsi:</label>
                         <div class="encryption-toggle flex gap-2">
-                            <button id="caesar-toggle" class="flex-1 p-2 bg-gray-200 rounded-md hover:bg-teal-300 transition">Caesar Cipher</button>
-                            <button id="aes-toggle" class="flex-1 p-2 bg-gray-200 rounded-md hover:bg-teal-300 transition">AES Encryption</button>
-                            <button id="combined-toggle" class="flex-1 p-2 bg-teal-500 text-white rounded-md">Kombinasi</button>
+                            <button id="caesar-toggle" class="flex-1 p-3 bg-gray-200 rounded-lg hover:bg-teal-300 transition flex items-center justify-center">
+                                <i class="fas fa-exchange-alt mr-2"></i> Caesar Cipher
+                            </button>
+                            <button id="aes-toggle" class="flex-1 p-3 bg-gray-200 rounded-lg hover:bg-teal-300 transition flex items-center justify-center">
+                                <i class="fas fa-key mr-2"></i> AES Encryption
+                            </button>
+                            <button id="combined-toggle" class="flex-1 p-3 bg-teal-500 text-white rounded-lg flex items-center justify-center">
+                                <i class="fas fa-shield-alt mr-2"></i> Kombinasi
+                            </button>
                         </div>
                     </div>
                     
                     <div id="caesar-options" class="mb-4 hidden">
-                        <label for="key" class="block font-bold mb-2">Shift</label>
+                        <label for="key" class="block font-semibold mb-2">Shift</label>
                         <input type="number" class="p-3 border rounded-lg w-32 focus:outline-none focus:ring-2 focus:ring-teal-500" id="key">
                     </div>
                     
                     <div id="aes-options" class="mb-4 hidden">
-                        <label for="aes-key" class="block font-bold mb-2">AES Key</label>
-                        <input type="text" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" id="aes-key" placeholder="Enter a secure key">
+                        <label for="aes-key" class="block font-semibold mb-2">AES Key</label>
+                        <input type="text" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" id="aes-key" placeholder="Masukkan kunci AES">
                     </div>
                     
-                    <div id="combined-options" class="mb-4 bg-white/30 p-4 rounded-lg">
-                        <label for="aes-key-combined" class="block font-bold mb-2">AES Key</label>
-                        <input type="text" class="w-full p-3 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-teal-500" id="aes-key-combined" placeholder="Enter a secure key">
+                    <div id="combined-options" class="mb-4 bg-slate-50/80 p-5 rounded-lg shadow-sm">
+                        <label for="aes-key-combined" class="block font-semibold mb-2">AES Key</label>
+                        <input type="text" class="w-full p-3 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-teal-500" id="aes-key-combined" placeholder="Masukkan kunci AES">
                         
-                        <label for="key-combined" class="block font-bold mb-2">Caesar Shift</label>
+                        <label for="key-combined" class="block font-semibold mb-2">Caesar Shift</label>
                         <input type="number" class="p-3 border rounded-lg w-32 focus:outline-none focus:ring-2 focus:ring-teal-500" id="key-combined">
                     </div>
                     
                     <div class="mb-4">
-                        <label for="chipertext" class="block font-bold mb-2">Chipertext</label>
+                        <label for="chipertext" class="block font-semibold mb-2">Chipertext</label>
                         <textarea class="w-full p-3 border rounded-lg bg-gray-100 focus:outline-none" id="chipertext" rows="3" readonly></textarea>
                     </div>
                     
-                    <div class="mb-4">
-                        <label for="coverImage" class="block font-bold mb-2">Cover Image</label>
-                        <input class="w-full p-3 border rounded-lg bg-white" type="file" id="coverImage" accept="image/*">
-                        <small class="text-sm">Masukkan gambar dengan format jpg/jpeg</small>
+                    <div class="mb-5">
+                        <label for="coverImage" class="block font-semibold mb-2">Cover Image</label>
+                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 bg-gray-50 hover:bg-gray-100 transition">
+                            <input class="w-full" type="file" id="coverImage" accept="image/*">
+                        </div>
+                        <small class="text-sm text-gray-600 mt-1 block">Masukkan gambar dengan format jpg/jpeg</small>
                     </div>
                     
                     <div class="flex gap-4">
-                        <button class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition" id="btn-combine">Enkripsi</button>
-                        <button class="bg-white hover:bg-red-100 text-red-500 border border-red-500 px-6 py-2 rounded-lg transition" id="btn-reset-encrypt">Reset</button>
+                        <button class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition font-medium flex items-center" id="btn-combine">
+                            <i class="fas fa-lock mr-2"></i> Enkripsi
+                        </button>
+                        <button class="bg-white hover:bg-red-100 text-red-500 border border-red-500 px-6 py-3 rounded-lg transition font-medium flex items-center" id="btn-reset-encrypt">
+                            <i class="fas fa-redo mr-2"></i> Reset
+                        </button>
                     </div>
                 </div>
                 
                 <div>
                     <div class="before mb-6">
-                        <canvas id="canvas" class="w-full min-h-[200px] border border-dashed border-gray-300 rounded-lg bg-white/50 mb-2"></canvas>
-                        <p class="text-center font-semibold text-before"></p>
+                        <label class="block font-semibold mb-2">Cover Image</label>
+                        <canvas id="canvas" class="w-full min-h-[200px] borde   r border-dashed border-gray-300 rounded-lg bg-white/70 mb-2 shadow-md"></canvas>
+                        <p class="text-center font-semibold text-before text-white"></p>
                     </div>
                     
                     <div class="after">
-                        <canvas id="canvasAfter" class="w-full min-h-[200px] border border-dashed border-gray-300 rounded-lg bg-white/50 mb-2"></canvas>
-                        <p class="text-center font-semibold text-after"></p>
+                        <label class="block font-semibold mb-2">Stego Image</label>
+                        <canvas id="canvasAfter" class="w-full min-h-[200px] border border-dashed border-gray-300 rounded-lg bg-white/70 mb-2 shadow-md"></canvas>
+                        <p class="text-center font-semibold text-after text-white"></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="decrypt bg-yellow-400 py-16 min-h-screen" id="decrypt">
-        <div class="container mx-auto px-4">
-            <h2 class="decrypt-title text-center text-3xl font-bold mb-8">DEKRIPSI</h2>
+    <section class="decrypt bg-gradient-to-br from-yellow-400 to-yellow-500 py-16 min-h-screen relative" id="decrypt">
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="decrypt-title text-center text-3xl font-bold mb-8 text-white section-title">DEKRIPSI</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <div class="mb-4">
-                        <label for="stegoImage" class="block font-bold mb-2">Stego Image</label>
-                        <input class="w-full p-3 border rounded-lg bg-white" type="file" id="stegoImage" accept="image/*">
-                        <small class="text-sm">Masukkan gambar terenkripsi</small>
+                <div class="card p-6">
+                    <div class="mb-5">
+                        <label for="stegoImage" class="block font-semibold mb-2">Stego Image</label>
+                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 bg-gray-50 hover:bg-gray-100 transition">
+                            <input class="w-full" type="file" id="stegoImage" accept="image/*">
+                        </div>
+                        <small class="text-sm text-gray-600 mt-1 block">Masukkan gambar terenkripsi</small>
                     </div>
                     
-                    <canvas id="canvasDecrypt" class="w-full min-h-0 border border-dashed border-gray-300 rounded-lg bg-white/50 mb-4"></canvas>
+                    <label class="block font-semibold mb-2">Preview</label>
+                    <canvas id="canvasDecrypt" class="w-full min-h-[200px] border border-dashed border-gray-300 rounded-lg bg-white/70 mb-4 shadow-md"></canvas>
                     
-                    <div class="encryption-method mb-4">
-                        <label class="block font-bold mb-2">Metode Dekripsi:</label>
+                    <div class="encryption-method mb-6">
+                        <label class="block font-semibold mb-3">Metode Dekripsi:</label>
                         <div class="encryption-toggle flex gap-2">
-                            <button id="caesar-toggle-decrypt" class="flex-1 p-2 bg-yellow-500 text-white rounded-md">Caesar Cipher</button>
-                            <button id="aes-toggle-decrypt" class="flex-1 p-2 bg-gray-200 rounded-md hover:bg-yellow-300 transition">AES Decryption</button>
-                            <button id="combined-toggle-decrypt" class="flex-1 p-2 bg-gray-200 rounded-md hover:bg-yellow-300 transition">Kombinasi</button>
+                            <button id="caesar-toggle-decrypt" class="flex-1 p-3 bg-yellow-500 text-white rounded-lg flex items-center justify-center">
+                                <i class="fas fa-exchange-alt mr-2"></i> Caesar Cipher
+                            </button>
+                            <button id="aes-toggle-decrypt" class="flex-1 p-3 bg-gray-200 rounded-lg hover:bg-yellow-300 transition flex items-center justify-center">
+                                <i class="fas fa-key mr-2"></i> AES Decryption
+                            </button>
+                            <button id="combined-toggle-decrypt" class="flex-1 p-3 bg-gray-200 rounded-lg hover:bg-yellow-300 transition flex items-center justify-center">
+                                <i class="fas fa-shield-alt mr-2"></i> Kombinasi
+                            </button>
                         </div>
                     </div>
                     
                     <div id="caesar-options-decrypt" class="mb-4">
                         <div class="shiftDecrypt">
-                            <label for="keyDecrypt" class="block font-bold mb-2">Shift</label>
+                            <label for="keyDecrypt" class="block font-semibold mb-2">Shift</label>
                             <input type="number" class="p-3 border rounded-lg w-32 focus:outline-none focus:ring-2 focus:ring-yellow-500" id="keyDecrypt">
                         </div>
                     </div>
                     
                     <div id="aes-options-decrypt" class="mb-4 hidden">
-                        <label for="aes-key-decrypt" class="block font-bold mb-2">AES Key</label>
-                        <input type="text" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" id="aes-key-decrypt" placeholder="Enter the same key used for encryption">
+                        <label for="aes-key-decrypt" class="block font-semibold mb-2">AES Key</label>
+                        <input type="text" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" id="aes-key-decrypt" placeholder="Masukkan kunci AES yang sama dengan enkripsi">
                     </div>
                     
-                    <div id="combined-options-decrypt" class="mb-4 hidden bg-white/30 p-4 rounded-lg">
-                        <label for="aes-key-combined-decrypt" class="block font-bold mb-2">AES Key</label>
-                        <input type="text" class="w-full p-3 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-yellow-500" id="aes-key-combined-decrypt" placeholder="Enter the same key used for encryption">
+                    <div id="combined-options-decrypt" class="mb-4 hidden bg-slate-50/80 p-5 rounded-lg shadow-sm">
+                        <label for="aes-key-combined-decrypt" class="block font-semibold mb-2">AES Key</label>
+                        <input type="text" class="w-full p-3 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-yellow-500" id="aes-key-combined-decrypt" placeholder="Masukkan kunci AES yang sama dengan enkripsi">
                         
-                        <label for="key-combined-decrypt" class="block font-bold mb-2">Caesar Shift</label>
+                        <label for="key-combined-decrypt" class="block font-semibold mb-2">Caesar Shift</label>
                         <input type="number" class="p-3 border rounded-lg w-32 focus:outline-none focus:ring-2 focus:ring-yellow-500" id="key-combined-decrypt">
                     </div>
                     
                     <div class="flex gap-4">
-                        <button class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition" id="btn-decrypt">Dekripsi</button>
-                        <button class="bg-white hover:bg-red-100 text-red-500 border border-red-500 px-6 py-2 rounded-lg transition" id="btn-reset-decrypt">Reset</button>
+                        <button class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition font-medium flex items-center" id="btn-decrypt">
+                            <i class="fas fa-unlock mr-2"></i> Dekripsi
+                        </button>
+                        <button class="bg-white hover:bg-red-100 text-red-500 border border-red-500 px-6 py-3 rounded-lg transition font-medium flex items-center" id="btn-reset-decrypt">
+                            <i class="fas fa-redo mr-2"></i> Reset
+                        </button>
                     </div>
                 </div>
                 
                 <div>
                     <div class="mb-4">
-                        <label for="resultDecrypt" class="block font-bold mb-2">Result</label>
-                        <textarea class="w-full p-3 border rounded-lg bg-gray-100 focus:outline-none" id="resultDecrypt" rows="8" readonly></textarea>
+                        <label for="resultDecrypt" class="block font-semibold mb-2 text-white">Hasil</label>
+                        <div class="bg-white rounded-lg shadow-md p-4">
+                            <textarea class="w-full p-3 border rounded-lg bg-gray-50 focus:outline-none min-h-[300px]" id="resultDecrypt" rows="12" readonly></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <footer class="bg-slate-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 Lukek - Layanan Pesan Gambar Berbasis Chipper Text</p>
+        </div>
+    </footer>
+
 <script src="index.js"></script>
 </body>
 </html>
